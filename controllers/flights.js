@@ -18,7 +18,7 @@ function newFlight(req, res){
 }
 
 function create(req, res){
-  if(req.body.depars === ""){
+  if(req.body.departs === ""){
     let curDate = new Date();
     req.body.departs = curDate.setFullYear(curDate.getFullYear() + 1)
   }
@@ -32,8 +32,20 @@ function create(req, res){
   })
 }
 
+function deleteFlight(req, res){
+  Flight.findByIdAndDelete(req.params.flightId)
+  .then(flight =>{
+    res.redirect('/flights')
+  })  
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
 export {
   index,
   newFlight as new,
   create,
+  deleteFlight as delete
 }
