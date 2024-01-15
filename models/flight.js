@@ -19,9 +19,6 @@ const fligtSchema = new Schema({
   },
   departs:{
     type: Date,
-    default: function(){    
-      return new Date().setFullYear(curDate.getFullYear() + 1)
-    }
   }
 });
 

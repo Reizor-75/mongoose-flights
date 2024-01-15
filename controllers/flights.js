@@ -17,7 +17,23 @@ function newFlight(req, res){
   res.render('flights/new', {});
 }
 
+function create(req, res){
+  if(req.body.depars === ""){
+    let curDate = new Date();
+    req.body.departs = curDate.setFullYear(curDate.getFullYear() + 1)
+  }
+  Flight.create(req.body)
+  .then(flight => {
+    res.redirect('/flights')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/flights/new')
+  })
+}
+
 export {
   index,
-  newFlight as new
+  newFlight as new,
+  create,
 }
