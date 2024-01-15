@@ -1,7 +1,7 @@
 import { Flight } from "../models/flight.js"
 
-function index(req, res){
-  console.log("index controler")
+function index(req, res){  
+  res.render('flights/index', {})
 }
 
 export {
