@@ -13,6 +13,11 @@ function index(req, res){
   })
 }
 
+function newFlight(req, res){  
+  res.render('flights/new', {});
+}
+
 export {
-  index
+  index,
+  newFlight as new
 }
