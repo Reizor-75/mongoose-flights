@@ -17,3 +17,18 @@ form > button {
   margin-left: auto;
   font-size: 22px;
 }
+
+
+a{
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #424748;
+  background-color: lightsteelblue;
+}
+
+a:hover{
+  color: white;
+  background-color: #424748;
+}
