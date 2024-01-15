@@ -1,27 +1,32 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
 const fligtSchema = new Schema({
   airline: {
-    tpye: String,
+    type: String,
     enum: ["American", "Southwest", "United"]
   },
   airport: {    
-    tpye: String,
+    type: String,
     enum: ["AUS", "DFW", "DEN", "LAX", "SAN"],
     default: "DEN"
   },
   flightNo: {
-    tpye: Number,
+    type: Number,
     min: 10,
-    max:  9999
+    max: 9999
   },
   departs:{
     type: Date,
     default: function(){    
-      let curDate = new Date();
-      return curDate.setFullYear(curDate.getFullYear() + 1)
+      return new Date().setFullYear(curDate.getFullYear() + 1)
     }
   }
 });
+
+const Flight = mongoose.model('Flight', fligtSchema)
+
+export{
+  Flight
+}
