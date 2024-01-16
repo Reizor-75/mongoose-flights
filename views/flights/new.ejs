@@ -18,11 +18,12 @@
     <!-- Airpirt -->
     <label for="airport-input">Airport: </label>
     <select name="airport" id="airport-select">
-      <option value="AUS">Austin-Bergstrom International</option>
-      <option value="DFW">Dallas/Fort Worth International</option>
-      <option value="DEN">Denver International</option>
-      <option value="LAX">Los Angeles International</option>
-      <option value="SAN">San Diego International </option>
+  
+      <option value="AUS">AUS</option>
+      <option value="DFW">DFW</option>
+      <option value="DEN">DEN</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN </option>
     </select>
     <!-- Flight number -->
     <label for="flightNo-input">Flight No:</label>
@@ -35,7 +36,6 @@
     <input 
       type="date" 
       name="departs" 
-      value = "<%= new Date()%>" 
       id="departs-input">
     
     <button type="submit">Add Flight</button>
