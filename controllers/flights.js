@@ -17,10 +17,11 @@ function newFlight(req, res){
   res.render('flights/new', {});
 }
 
-function create(req, res){
+function create(req, res){ 
   if(req.body.departs === ""){
     let curDate = new Date();
-    req.body.departs = curDate.setFullYear(curDate.getFullYear() + 1)
+    curDate.setFullYear(curDate.getFullYear() + 1)
+    req.body.departs = curDate
   }
   Flight.create(req.body)
   .then(flight => {
@@ -69,11 +70,23 @@ function edit(req, res){
   })
 }
 
+function update(req, res){
+  Flight.findByIdAndUpdate(req.params.flightId, req.body, {new:true})
+  .then( flight =>{
+    res.redirect(`/flights/${flight._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/flights')
+  })
+}
+
 export {
   index,
   newFlight as new,
   create,
   deleteFlight as delete,
   show,
-  edit
+  edit,
+  update
 }

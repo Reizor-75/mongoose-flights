@@ -5,7 +5,7 @@
   <h1>Edit Flight</h1>
   <form 
     id="new-form" 
-    action="/flights" 
+    action="/flights/<%= flight._id %>?_method=PUT" 
     method="POST"
   >
     <!-- Airline -->
@@ -74,13 +74,13 @@
       why does the tostring function format in month/day/year but value formats in year/month/day
       and all the functions do not format with the 0 in front of the day/month if it's less than 10-->
     <input 
-      type="date" 
+      type="datetime-local" 
       name="departs"
-      value = "<%=flight.departs.getFullYear()%>-<%if(flight.departs.getMonth() <10) {%>0<%= flight.departs.getMonth()%><% } else {%><%=flight.departs.getMonth()%><% } %><%if(flight.departs.getDate() <10) {%>-0<%=flight.departs.getDate()%><% } else {%><%=flight.departs.getDate()%><% } %>"
-      id="departs-input">
+      value = "<%=flight.departs.toISOString().slice(0,16)%>"
+      id="departs-input"
+    >
     <button type="submit">Edit Flight</button>
   </form>
-  
 </main>
 
 <%- include('../partials/footer')  %>

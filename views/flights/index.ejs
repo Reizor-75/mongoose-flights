@@ -9,7 +9,7 @@
         <th>Airline</th>
         <th>Airport</th>
         <th>Flight No.</th>
-        <th>Departure Date</th>
+        <th>Departure</th>
         <th> </th>
         <th>Delete Flight</th>
       </tr>
@@ -20,7 +20,7 @@
         <td><%= flight.airline %></td>
         <td><%= flight.airport %></td>
         <td><%= flight.flightNo %></td>
-        <td><%= flight.departs.toLocaleDateString() %></td>
+        <td><%= flight.departs.toLocaleString() %></td>
         <td> <a href="flights/<%= flight._id %>"> Details</a> </td>
         <td>
           <form 
