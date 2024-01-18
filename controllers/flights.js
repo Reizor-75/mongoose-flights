@@ -14,34 +14,41 @@ function index(req, res){
 }
 
 function newFlight(req, res){  
-  res.render('flights/new', {});
+  const newFlight = new Flight();
+  // Obtain the default date
+  const dt = newFlight.departs;
+  // Format the date for the value attribute of the input
+  const departsDate = dt.toISOString().slice(0, 16);
+  res.render('flights/new', {
+    departsDate
+  });
 }
 
 function create(req, res){ 
   if(req.body.departs === ""){
     let curDate = new Date();
-    curDate.setFullYear(curDate.getFullYear() + 1)
-    req.body.departs = curDate
+    curDate.setFullYear(curDate.getFullYear() + 1);
+    req.body.departs = curDate;
   }
   Flight.create(req.body)
   .then(flight => {
-    res.redirect('/flights')
+    res.redirect('/flights');
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/flights/new')
-  })
+    res.redirect('/flights/new');
+  });
 }
 
 function deleteFlight(req, res){
   Flight.findByIdAndDelete(req.params.flightId)
   .then(flight =>{
-    res.redirect('/flights')
+    res.redirect('/flights');
   })  
   .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
+    console.log(err);
+    res.redirect('/');
+  });
 }
 
 function show(req, res){
@@ -49,12 +56,12 @@ function show(req, res){
   .then(flight =>{
     res.render('flights/show',{
       flight:flight
-    })
+    });
   })
   .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
+    console.log(err);
+    res.redirect('/');
+  });
 }
 
 function edit(req, res){
@@ -62,23 +69,23 @@ function edit(req, res){
   .then(flight => {
     res.render('flights/edit', {
       flight: flight
-    })
+    });
   })
   .catch(err => {
-    console.log(err)
-    res.redirect('/flights')
-  })
+    console.log(err);
+    res.redirect('/flights');
+  });
 }
 
 function update(req, res){
   Flight.findByIdAndUpdate(req.params.flightId, req.body, {new:true})
   .then( flight =>{
-    res.redirect(`/flights/${flight._id}`)
+    res.redirect(`/flights/${flight._id}`);
   })
   .catch(err => {
-    console.log(err)
-    res.redirect('/flights')
-  })
+    console.log(err);
+    res.redirect('/flights');
+  });
 }
 
 export {
