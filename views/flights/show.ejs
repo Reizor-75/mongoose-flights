@@ -16,13 +16,13 @@
     </section>
 
     <!-- tickets -->
-    <% if(!flight.tickets){ %>
+    <% if(flight.tickets.length){ %>
       <h2>Ticket Information</h2>
       <section>
-        <div>Seat: </div>
-        <div><%= flight.tickets.seat %></div>
-        <div>Price: </div>
-        <div><%= flight.tickets.price %></div>
+        <% flight.tickets.forEach(ticket => { %>
+          <div>Seat: <%= ticket.seat %></div>
+          <div>Price: <%= ticket.price %></div>
+          <% }); %>
       </section>
       <% } %>
     <!-- add a ticket -->
@@ -33,7 +33,7 @@
       <input  type="text" name="seat" id="seat-input">
       <label for="price-input">Price:</label>
       <input  type="text" name="price" id="price-input">
-      <button type="submit">Add Tick</button>
+      <button type="submit">Add Ticket</button>
       </form> 
     </section>
     <a href="/flights" 
