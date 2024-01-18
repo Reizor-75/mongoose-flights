@@ -88,6 +88,10 @@ function update(req, res){
   });
 }
 
+function createTicket(req, res){
+  console.log("✈️")
+}
+
 export {
   index,
   newFlight as new,
@@ -95,5 +99,6 @@ export {
   deleteFlight as delete,
   show,
   edit,
-  update
+  update,
+  createTicket
 }

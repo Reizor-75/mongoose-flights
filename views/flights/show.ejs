@@ -13,6 +13,29 @@
     <div><%= flight.flightNo %></div>
     <div>Departure : </div>
     <div><%= flight.departs.toLocaleString() %></div>
+    </section>
+
+    <!-- tickets -->
+    <% if(!flight.tickets){ %>
+      <h2>Ticket Information</h2>
+      <section>
+        <div>Seat: </div>
+        <div><%= flight.tickets.seat %></div>
+        <div>Price: </div>
+        <div><%= flight.tickets.price %></div>
+      </section>
+      <% } %>
+    <!-- add a ticket -->
+    <h2>Add Ticket</h2>
+    <section>
+      <form id="add-ticket" action="/flights/<%= flight._id %>/tickets" method="POST">
+        <label for="seat-input">Seat:</label>
+      <input  type="text" name="seat" id="seat-input">
+      <label for="price-input">Price:</label>
+      <input  type="text" name="price" id="price-input">
+      <button type="submit">Add Tick</button>
+      </form> 
+    </section>
     <a href="/flights" 
       id= "edit-flight"> 
       <button>Return to Flights</button>
@@ -22,7 +45,7 @@
       id= "edit-flight"> 
       <button>Edit Flights</button>
     </a>
-  </section>
+  
 
 </main>
 <%- include('../partials/footer') %>
