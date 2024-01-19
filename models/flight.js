@@ -38,7 +38,7 @@ const fligtSchema = new Schema({
     }
   },
   tickets: [ticketSchema],
-  meals: [{type: Schema.Types.ObjectId, ref:"Meals"}]
+  meals: [{type: Schema.Types.ObjectId, ref:"Meal"}]
 });
 
 const Flight = mongoose.model('Flight', fligtSchema);

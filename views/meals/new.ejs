@@ -1,12 +1,13 @@
 <%- include('../partials/html-head') %>
 <link rel="stylesheet" href="/stylesheets/flights/new.css" />
 <%- include('../partials/nav') %>
+
 <main>
   <h1> Add new Meals</h1>
-  <p>Please first ensure that the Meal is not in the dropdown
+  <p>Please first ensure that the <span class="keyword">Meal</span> is not in the dropdown
     <select>
       <% meals.forEach(function(meal) { %>
-        <option><%= meal.name %></option>
+        <option value="<%= meal.name %>"><%= meal.name %></option>
       <% }) %>
     </select>
   </p>
