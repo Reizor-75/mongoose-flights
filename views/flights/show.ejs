@@ -41,11 +41,9 @@
   <% if(flight.meals.length){ %>
     <h2>Meals</h2>
     <section>
-      <ul>
-        <% flights.meals.forEach(meal => { %>
-          <li><%= meal.name %></li>
+        <% flight.meals.forEach(meal => { %>
+          <div>Selected Meal: </div> <div><%= meal.name %></div>
         <% }) %>
-      </ul>
     </section>
   <% } %>
 
@@ -62,10 +60,10 @@
     </form>
   </section>
 
-  <a href="/flights" 
+  <!-- <a href="/flights" 
     id= "edit-flight"> 
     <button>Return to Flights</button>
-  </a>
+  </a> -->
   <a 
   href="/flights/<%= flight._id %>/edit"
     id= "edit-flight"> 
